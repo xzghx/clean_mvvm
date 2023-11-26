@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   Timer? _timer;
 
   _start() {
-    _timer = Timer(const Duration(seconds: 1), _goMainPage);
+    _timer = Timer(const Duration(milliseconds: 700), _goMainPage);
   }
 
   void _goMainPage() {
