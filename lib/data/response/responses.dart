@@ -16,7 +16,7 @@ class CustomerResponse {
   CustomerResponse();
 
   @JsonKey(name: 'id') //api key
-  int? id;
+  String? id;
 
   @JsonKey(name: 'name')
   String? name;

@@ -1,11 +1,13 @@
+import '../data/mapper/mapper.dart';
+
 extension NonNullString on String? {
   String orEmpty() {
-    return this ?? '';
+    return this ?? EMPTY;
   }
 }
 
 extension NonNullInt on int? {
   int orZero() {
-    return this ?? 0;
+    return this ?? ZERO;
   }
 }
