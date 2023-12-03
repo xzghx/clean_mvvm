@@ -21,11 +21,21 @@ class _AppServiceClient implements AppServiceClient {
   String? baseUrl;
 
   @override
-  Future<LoginResponse> login() async {
+  Future<LoginResponse> login(
+    String email,
+    String password,
+    String imei,
+    String deviceType,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    final _data = {
+      'email': email,
+      'password': password,
+      'imei': imei,
+      'deviceType': deviceType,
+    };
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<LoginResponse>(Options(
       method: 'POST',

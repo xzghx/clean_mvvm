@@ -1,7 +1,8 @@
 class LoginRequest {
-  String userName;
+  final String email;
+  final String password;
+  final String imei;
+  final String deviceType;
 
-  String password;
-
-  LoginRequest(this.userName, this.password);
+  const LoginRequest(this.email, this.password, this.imei, this.deviceType);
 }
