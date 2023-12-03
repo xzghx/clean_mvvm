@@ -10,7 +10,7 @@ abstract class RemoteDataSource {
 class RemoteDataSourceImpl implements RemoteDataSource {
   final AppServiceClient _appServiceClient;
 
-  RemoteDataSourceImpl(this._appServiceClient);
+  const RemoteDataSourceImpl(this._appServiceClient);
 
   @override
   Future<LoginResponse> login(LoginRequest loginRequest) async {
