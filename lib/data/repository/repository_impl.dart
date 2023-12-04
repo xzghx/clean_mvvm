@@ -1,5 +1,6 @@
 import 'package:clean_mvvm_project/data/data_source/remote_data_source.dart';
 import 'package:clean_mvvm_project/data/mapper/mapper.dart';
+import 'package:clean_mvvm_project/data/network/error_handler.dart';
 import 'package:clean_mvvm_project/data/network/failure.dart';
 import 'package:clean_mvvm_project/data/network/network_info.dart';
 import 'package:clean_mvvm_project/data/request/requests.dart';
@@ -18,15 +19,19 @@ class RepositoryImpl implements Repository {
   @override
   Future<Either<Failure, Login>> login(LoginRequest request) async {
     if (await _networkInfo.isConnected) {
-      final LoginResponse response = await _remoteDataSource.login(request);
-      if (response.status == 0) {
-        return Right(response.toDomain());
-      } else {
-        return Left(Failure(
-            409, response.message ?? 'Unknown error occurred from api.'));
+      try {
+        final LoginResponse response = await _remoteDataSource.login(request);
+        if (response.status == ApiInternalStatus.success) {
+          return Right(response.toDomain());
+        } else {
+          return Left(Failure(response.status ?? ApiInternalStatus.failure,
+              response.message ?? ResponseMessage.DEFAULT));
+        }
+      } catch (error) {
+        return Left(ErrorHandler.handle(error).failure);
       }
     } else {
-      return const Left(Failure(501, 'Please check your internet connection'));
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }
 }
