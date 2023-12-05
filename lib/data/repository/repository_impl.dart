@@ -5,10 +5,10 @@ import 'package:clean_mvvm_project/data/network/failure.dart';
 import 'package:clean_mvvm_project/data/network/network_info.dart';
 import 'package:clean_mvvm_project/data/request/requests.dart';
 import 'package:clean_mvvm_project/data/response/responses.dart';
-import 'package:clean_mvvm_project/domain/repository.dart';
+import 'package:clean_mvvm_project/domain/repository/repository.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../domain/model.dart';
+import '../../domain/model/model.dart';
 
 class RepositoryImpl implements Repository {
   final NetworkInfo _networkInfo;

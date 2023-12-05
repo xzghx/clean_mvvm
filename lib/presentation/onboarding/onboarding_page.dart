@@ -5,7 +5,7 @@ import 'package:clean_mvvm_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../domain/model.dart';
+import '../../domain/model/model.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});

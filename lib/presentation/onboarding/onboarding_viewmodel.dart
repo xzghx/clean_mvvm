@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:clean_mvvm_project/domain/model.dart';
+import 'package:clean_mvvm_project/domain/model/model.dart';
 import 'package:clean_mvvm_project/presentation/base/base_view_model.dart';
 
 import '../resources/assets_manager.dart';
@@ -105,5 +105,6 @@ class OnBoardingViewObject {
   final int numOfSlides;
   final SliderObject onBoardingObject;
 
-  OnBoardingViewObject(this.currentIndex, this.numOfSlides, this.onBoardingObject);
+  OnBoardingViewObject(
+      this.currentIndex, this.numOfSlides, this.onBoardingObject);
 }
