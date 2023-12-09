@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../domain/model/model.dart';
+import '../resources/routes_manager.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
@@ -113,7 +114,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushReplacementNamed(Routes.loginRoute);
+                      },
                       child: Text(
                         AppStrings.skip,
                         style: Theme.of(context).textTheme.titleMedium,

@@ -9,6 +9,7 @@ ThemeData getApplicationTheme() {
   return ThemeData(
     //Set Color
     primaryColor: ColorManager.primary,
+    scaffoldBackgroundColor: ColorManager.white,
     primaryColorLight: ColorManager.primaryOpacity70,
     primaryColorDark: ColorManager.darkPrimary,
     disabledColor: ColorManager.grey1,

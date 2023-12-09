@@ -20,7 +20,7 @@ dependencies:
   analyzer: ^6.2.0 #^6.2.0
   dartz: ^0.10.1
   shared_preferences: ^2.2.2
-  device_info_plus: ^9.1.1
+#  device_info_plus: ^9.1.1
   get_it: ^7.6.4
   lottie: ^2.6.0
   image_picker: ^1.0.4
