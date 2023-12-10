@@ -1,9 +1,8 @@
-import 'package:clean_mvvm_project/data/repository/repository_impl.dart';
-import 'package:clean_mvvm_project/domain/usecases/login_usecase.dart';
 import 'package:clean_mvvm_project/presentation/resources/strings_manager.dart';
 import 'package:clean_mvvm_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../../app/di.dart';
 import '../resources/assets_manager.dart';
 import '../resources/routes_manager.dart';
 import 'login_viewmodel.dart';
@@ -16,8 +15,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final LoginViewModel _loginViewModel =
-      LoginViewModel(LoginUseCase(_repositoryImpl));
+  final LoginViewModel _loginViewModel = instance<LoginViewModel>();
+
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _key = GlobalKey<FormState>();
