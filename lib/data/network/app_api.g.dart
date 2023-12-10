@@ -13,7 +13,7 @@ class _AppServiceClient implements AppServiceClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://minafarid123.mocklab.io';
+    baseUrl ??= 'https://run.mocky.io';
   }
 
   final Dio _dio;
@@ -44,7 +44,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              '/customers/login',
+              '/v3/f0fb3ca9-85f2-4811-92b8-352861602d1e',
               queryParameters: queryParameters,
               data: _data,
             )
