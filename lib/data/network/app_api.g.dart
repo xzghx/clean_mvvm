@@ -44,7 +44,7 @@ class _AppServiceClient implements AppServiceClient {
     )
             .compose(
               _dio.options,
-              '/v3/f0fb3ca9-85f2-4811-92b8-352861602d1e',
+              '/v3/161a2ee5-4007-4c72-9d96-1e7d9cc25eaa',
               queryParameters: queryParameters,
               data: _data,
             )

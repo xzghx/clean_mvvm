@@ -10,7 +10,7 @@ part 'app_api.g.dart';
 abstract class AppServiceClient {
   factory AppServiceClient(Dio dio, {String? baseUrl}) = _AppServiceClient;
 
-  @POST('/v3/f0fb3ca9-85f2-4811-92b8-352861602d1e')
+  @POST('/v3/161a2ee5-4007-4c72-9d96-1e7d9cc25eaa')
   Future<LoginResponse> login(
     @Field('email') String email,
     @Field('password') String password,

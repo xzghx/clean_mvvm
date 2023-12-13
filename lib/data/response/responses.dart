@@ -16,7 +16,7 @@ class CustomerResponse {
   CustomerResponse();
 
   @JsonKey(name: 'id') //api key
-  String? id;
+  int? id;
 
   @JsonKey(name: 'name')
   String? name;
@@ -38,7 +38,7 @@ class ContactsResponse {
   String? email;
 
   @JsonKey(name: 'phone')
-  String? phone;
+  int? phone;
 
   @JsonKey(name: 'link')
   String? link;

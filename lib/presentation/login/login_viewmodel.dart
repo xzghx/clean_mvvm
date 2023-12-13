@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:clean_mvvm_project/domain/usecases/login_usecase.dart';
 import 'package:clean_mvvm_project/presentation/base/base_view_model.dart';
 import 'package:clean_mvvm_project/presentation/common/freezed_data_classes.dart';
+import 'package:clean_mvvm_project/presentation/common/state_renderer/state_renderer.dart';
+import 'package:clean_mvvm_project/presentation/common/state_renderer/state_renderer_impl.dart';
 
-class LoginViewModel
-    implements BaseViewModel, LoginViewModelInputs, LoginViewModelOutputs {
+class LoginViewModel extends BaseViewModel
+    implements LoginViewModelInputs, LoginViewModelOutputs {
   final StreamController<String> _userNameStreamController =
       StreamController<String>.broadcast();
 
@@ -13,6 +15,7 @@ class LoginViewModel
       StreamController<String>.broadcast();
   final StreamController<void> _isAllValidStreamController =
       StreamController<void>.broadcast();
+  final StreamController<bool> isLoggedInSController = StreamController<bool>();
 
   LoginObject loginObject = LoginObject('', '');
   final LoginUseCase _loginUseCase;
@@ -25,10 +28,14 @@ class LoginViewModel
     _userNameStreamController.close();
     _passwordStreamController.close();
     _isAllValidStreamController.close();
+    isLoggedInSController.close();
   }
 
   @override
-  void start() {}
+  void start() {
+    //Show the login ui at the start
+    inputFlowState.add(ContentState());
+  }
 
   //Inputs---------------------
   @override
@@ -42,16 +49,25 @@ class LoginViewModel
 
   @override
   void login() async {
+    print('login called (viewModel line50). showing loading...');
+    inputFlowState.add(
+        LoadingState(stateRendererType: StateRendererType.popupLoadingState));
+
     (await _loginUseCase.execute(
             LoginUseCaseInput(loginObject.userName, loginObject.password)))
         .fold(
       (failure) => {
         //left , failure
-        print(failure.message)
+        // print(failure.message);
+        inputFlowState.add(ErrorState(
+            message: failure.message,
+            stateRendererType: StateRendererType.popupErrorState))
       },
-      (data) => {
+      (data) {
         //right , data
-        print(data.customer.name)
+        // print(data.customer.name);
+        inputFlowState.add(ContentState());
+        isLoggedInSController.add(true);
       },
     );
   }

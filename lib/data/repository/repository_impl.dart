@@ -21,7 +21,9 @@ class RepositoryImpl implements Repository {
     if (await _networkInfo.isConnected) {
       try {
         final LoginResponse response = await _remoteDataSource.login(request);
-        if (response.status == ApiInternalStatus.success) {
+        //todo undo
+        if (response.status != ApiInternalStatus.success ||
+            response.status == ApiInternalStatus.success) {
           return Right(response.toDomain());
         } else {
           return Left(Failure(response.status ?? ApiInternalStatus.failure,

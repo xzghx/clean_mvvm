@@ -4,7 +4,6 @@ import '../../app/di.dart';
 import '../forgot_password/forgot_password.dart';
 import '../login/login_page.dart';
 import '../main/main_page.dart';
-import '../onboarding/onboarding_page.dart';
 import '../register/register_page.dart';
 import '../splash/splash_page.dart';
 import '../store_details/store_details_page.dart';
@@ -26,7 +25,9 @@ class RoutesGenerator {
       case Routes.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashPage());
       case Routes.onBoardingRoute:
-        return MaterialPageRoute(builder: (_) => const OnBoardingPage());
+        //todo undo
+        initLoginModule();
+        return MaterialPageRoute(builder: (_) => const LoginPage());
       case Routes.mainRoute:
         return MaterialPageRoute(builder: (_) => const MainPage());
       case Routes.storeDetailsRoute:

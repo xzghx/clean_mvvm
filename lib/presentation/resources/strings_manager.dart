@@ -26,4 +26,7 @@ class AppStrings {
   static const String registerNow = "Create account";
   static const String login = 'login';
   static const String register = 'register';
+  static const String loading = 'Loading...';
+  static const String retry = 'Try again';
+  static const String ok = 'Ok';
 }

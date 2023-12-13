@@ -18,7 +18,7 @@ Map<String, dynamic> _$BaseResponseToJson(BaseResponse instance) =>
 
 CustomerResponse _$CustomerResponseFromJson(Map<String, dynamic> json) =>
     CustomerResponse()
-      ..id = json['id'] as String?
+      ..id = json['id'] as int?
       ..name = json['name'] as String?
       ..numOfNotifications = json['numOfNotifications'] as int?;
 
@@ -32,7 +32,7 @@ Map<String, dynamic> _$CustomerResponseToJson(CustomerResponse instance) =>
 ContactsResponse _$ContactsResponseFromJson(Map<String, dynamic> json) =>
     ContactsResponse()
       ..email = json['email'] as String?
-      ..phone = json['phone'] as String?
+      ..phone = json['phone'] as int?
       ..link = json['link'] as String?;
 
 Map<String, dynamic> _$ContactsResponseToJson(ContactsResponse instance) =>

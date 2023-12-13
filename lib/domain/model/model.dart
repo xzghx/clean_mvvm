@@ -9,7 +9,7 @@ class SliderObject {
 }
 
 class Customer {
-  final String id;
+  final int id;
 
   final String name;
 
@@ -17,19 +17,19 @@ class Customer {
 
   const Customer(this.id, this.name, this.numOfNotifications);
 
-  static const empty = Customer('', '', 0);
+  static const empty = Customer(0, '', 0);
 }
 
 class Contact {
   final String email;
 
-  final String phone;
+  final int phone;
 
   final String link;
 
   const Contact(this.email, this.phone, this.link);
 
-  static const empty = Contact('', '', '');
+  static const empty = Contact('', 0, '');
 }
 
 class Login {

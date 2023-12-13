@@ -11,7 +11,7 @@ const int ZERO = 0;
 extension CustomerResponseMapper on CustomerResponse? {
   Customer toDomain() {
     return Customer(
-      this?.id?.orEmpty() ?? EMPTY,
+      this?.id?.orZero() ?? ZERO,
       this?.name?.orEmpty() ?? EMPTY,
       this?.numOfNotifications?.orZero() ?? ZERO,
     );
@@ -22,7 +22,7 @@ extension ContactReponseMapper on ContactsResponse? {
   Contact toDomain() {
     return Contact(
       this?.email?.orEmpty() ?? EMPTY,
-      this?.phone?.orEmpty() ?? EMPTY,
+      this?.phone?.orZero() ?? ZERO,
       this?.link?.orEmpty() ?? EMPTY,
     );
   }
