@@ -1,3 +1,4 @@
+import 'package:clean_mvvm_project/app/app_prefs.dart';
 import 'package:clean_mvvm_project/presentation/common/state_renderer/state_renderer_impl.dart';
 import 'package:clean_mvvm_project/presentation/resources/strings_manager.dart';
 import 'package:clean_mvvm_project/presentation/resources/values_manager.dart';
@@ -18,6 +19,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final LoginViewModel _loginViewModel = instance<LoginViewModel>();
+  final AppPrefs _appPrefs = instance<AppPrefs>();
 
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -32,6 +34,8 @@ class _LoginPageState extends State<LoginPage> {
     });
     _loginViewModel.isLoggedInSController.stream.listen((bool isLoggedIn) {
       if (isLoggedIn) {
+        _appPrefs.setIsLoggedIn();
+
         SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
           Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
         });

@@ -5,6 +5,8 @@ import 'package:clean_mvvm_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../app/app_prefs.dart';
+import '../../app/di.dart';
 import '../../domain/model/model.dart';
 import '../resources/routes_manager.dart';
 
@@ -19,8 +21,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final PageController _pageController = PageController(initialPage: 0);
 
   final OnBoardingViewModel _viewModel = OnBoardingViewModel();
+  final AppPrefs _appPrefs = instance<AppPrefs>();
 
   _bind() {
+    _appPrefs.setOnboardingViewed();
     _viewModel.start(); //fills slider list
   }
 

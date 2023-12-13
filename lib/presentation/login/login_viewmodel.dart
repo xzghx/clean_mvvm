@@ -49,7 +49,6 @@ class LoginViewModel extends BaseViewModel
 
   @override
   void login() async {
-    print('login called (viewModel line50). showing loading...');
     inputFlowState.add(
         LoadingState(stateRendererType: StateRendererType.popupLoadingState));
 

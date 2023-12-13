@@ -4,6 +4,8 @@ import 'package:clean_mvvm_project/presentation/resources/color_manager.dart';
 import 'package:clean_mvvm_project/presentation/resources/routes_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../../app/app_prefs.dart';
+import '../../app/di.dart';
 import '../resources/assets_manager.dart';
 
 class SplashPage extends StatefulWidget {
@@ -15,13 +17,26 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   Timer? _timer;
+  final AppPrefs _appPrefs = instance<AppPrefs>();
 
   _start() {
     _timer = Timer(const Duration(milliseconds: 700), _goMainPage);
   }
 
-  void _goMainPage() {
-    Navigator.of(context).pushReplacementNamed(Routes.onBoardingRoute);
+  void _goMainPage() async {
+    _appPrefs.isLoggedIn().then((isLoggedIn) {
+      if (isLoggedIn) {
+        Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
+      } else {
+        _appPrefs.isOnboardingViewed().then((isOnboardingViewed) {
+          if (isOnboardingViewed) {
+            Navigator.of(context).pushReplacementNamed(Routes.loginRoute);
+          } else {
+            Navigator.of(context).pushReplacementNamed(Routes.onBoardingRoute);
+          }
+        });
+      }
+    });
   }
 
   @override
