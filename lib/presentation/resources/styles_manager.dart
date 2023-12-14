@@ -15,7 +15,7 @@ TextStyle _getTextStyle(
 }
 
 TextStyle lightTextStyle(
-    {double fontSize = FontSizeManager.s12, Color color = Colors.black}) {
+    {double fontSize = FontSizeManager.s18, Color color = Colors.black}) {
   return _getTextStyle(
       fontFamily: FontManager.fontFamily,
       fontWeight: FontWeightManager.light,
@@ -24,7 +24,7 @@ TextStyle lightTextStyle(
 }
 
 TextStyle regularTextStyle(
-    {double fontSize = FontSizeManager.s12, Color color = Colors.black}) {
+    {double fontSize = FontSizeManager.s18, Color color = Colors.black}) {
   return _getTextStyle(
       fontFamily: FontManager.fontFamily,
       fontWeight: FontWeightManager.regular,
@@ -33,7 +33,7 @@ TextStyle regularTextStyle(
 }
 
 TextStyle mediumTextStyle(
-    {double fontSize = FontSizeManager.s12, Color color = Colors.black}) {
+    {double fontSize = FontSizeManager.s18, Color color = Colors.black}) {
   return _getTextStyle(
       fontFamily: FontManager.fontFamily,
       fontWeight: FontWeightManager.medium,
@@ -42,7 +42,7 @@ TextStyle mediumTextStyle(
 }
 
 TextStyle semiBoldTextStyle(
-    {double fontSize = FontSizeManager.s12, Color color = Colors.black}) {
+    {double fontSize = FontSizeManager.s18, Color color = Colors.black}) {
   return _getTextStyle(
       fontFamily: FontManager.fontFamily,
       fontWeight: FontWeightManager.semiBold,
@@ -51,7 +51,7 @@ TextStyle semiBoldTextStyle(
 }
 
 TextStyle boldTextStyle(
-    {double fontSize = FontSizeManager.s12, Color color = Colors.black}) {
+    {double fontSize = FontSizeManager.s18, Color color = Colors.black}) {
   return _getTextStyle(
       fontFamily: FontManager.fontFamily,
       fontWeight: FontWeightManager.bold,

@@ -22,7 +22,7 @@ ThemeData getApplicationTheme() {
       shadowColor: ColorManager.grey,
       titleTextStyle: regularTextStyle(
         color: ColorManager.white,
-        fontSize: FontSizeManager.s16,
+        fontSize: FontSizeManager.s18,
       ),
     ),
     //Set CardView
@@ -49,12 +49,12 @@ ThemeData getApplicationTheme() {
     textTheme: TextTheme(
       //headline 1
       displayLarge: semiBoldTextStyle(
-          fontSize: FontSizeManager.s16, color: ColorManager.darkGrey),
+          fontSize: FontSizeManager.s18, color: ColorManager.darkGrey),
       //subtitle 1
       titleMedium: mediumTextStyle(
-          fontSize: FontSizeManager.s14, color: ColorManager.lightGrey),
+          fontSize: FontSizeManager.s16, color: ColorManager.lightGrey),
       titleSmall: mediumTextStyle(
-          fontSize: FontSizeManager.s12, color: ColorManager.primary),
+          fontSize: FontSizeManager.s14, color: ColorManager.primary),
       //caption
       bodySmall: regularTextStyle(color: ColorManager.grey1),
       //bodyText1

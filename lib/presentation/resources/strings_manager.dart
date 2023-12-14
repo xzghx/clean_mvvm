@@ -29,4 +29,5 @@ class AppStrings {
   static const String loading = 'Loading...';
   static const String retry = 'Try again';
   static const String ok = 'Ok';
+  static const String resetPassword = 'Reset Password';
 }
