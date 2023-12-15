@@ -36,3 +36,9 @@ extension LoginResponseMapper on LoginResponse? {
     );
   }
 }
+
+extension ResetPasswordMapper on ResetPasswordResponse? {
+  ResetPassword toDomain() {
+    return ResetPassword(this?.message ?? EMPTY);
+  }
+}

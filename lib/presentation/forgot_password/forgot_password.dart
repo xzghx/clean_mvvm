@@ -1,8 +1,10 @@
+import 'package:clean_mvvm_project/presentation/common/state_renderer/state_renderer_impl.dart';
 import 'package:clean_mvvm_project/presentation/forgot_password/forgot_password_viewModel.dart';
 import 'package:clean_mvvm_project/presentation/resources/strings_manager.dart';
 import 'package:clean_mvvm_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../../app/di.dart';
 import '../resources/assets_manager.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
@@ -13,10 +15,34 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
-  final ForgotPasswordViewModel _viewModel = ForgotPasswordViewModel();
+  final ForgotPasswordViewModel _viewModel =
+      instance<ForgotPasswordViewModel>();
+
+  @override
+  void initState() {
+    _viewModel.start();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    return StreamBuilder<FlowState>(
+        stream: _viewModel.outputFlowState,
+        builder: (context, snapshot) {
+          return snapshot.data
+                  ?.getScreenWidget(context, _getContent(), () {}) ??
+              _getContent();
+        });
+  }
+
+  Widget _getContent() {
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppStrings.forgotPassword),

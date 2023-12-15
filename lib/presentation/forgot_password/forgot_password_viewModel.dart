@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:clean_mvvm_project/domain/usecases/forgot_password_usecase.dart';
 import 'package:clean_mvvm_project/presentation/common/state_renderer/state_renderer.dart';
 import 'package:clean_mvvm_project/presentation/common/state_renderer/state_renderer_impl.dart';
 
@@ -8,8 +9,11 @@ import '../base/base_view_model.dart';
 class ForgotPasswordViewModel extends BaseViewModel
     implements ForgotPasswordViewModelInput, ForgotPasswordViewModelOutPut {
   String _email = '';
+  final ForgotPasswordUseCase _forgotPasswordUseCase;
+  final StreamController<String> _emailStController =
+      StreamController<String>.broadcast();
 
-  StreamController<String> _emailStController = StreamController<String>();
+  ForgotPasswordViewModel(this._forgotPasswordUseCase);
 
   //inputs
   @override
@@ -29,9 +33,16 @@ class ForgotPasswordViewModel extends BaseViewModel
   }
 
   @override
-  void resetPassword() {
+  void resetPassword() async {
     inputFlowState.add(
         LoadingState(stateRendererType: StateRendererType.popupLoadingState));
+    (await _forgotPasswordUseCase.execute(_email)).fold((l) {
+      inputFlowState.add(ErrorState(
+          message: l.message,
+          stateRendererType: StateRendererType.popupErrorState));
+    }, (r) {
+      inputFlowState.add(ContentState());
+    });
   }
 
   //OutPuts

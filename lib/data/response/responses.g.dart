@@ -60,3 +60,18 @@ Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
       'customer': instance.customer,
       'contact': instance.contact,
     };
+
+ResetPasswordResponse _$ResetPasswordResponseFromJson(
+        Map<String, dynamic> json) =>
+    ResetPasswordResponse()
+      ..status = json['status'] as int?
+      ..message = json['message'] as String?
+      ..supportMessage = json['supportMessage'] as String?;
+
+Map<String, dynamic> _$ResetPasswordResponseToJson(
+        ResetPasswordResponse instance) =>
+    <String, dynamic>{
+      'status': instance.status,
+      'message': instance.message,
+      'supportMessage': instance.supportMessage,
+    };

@@ -6,3 +6,9 @@ class LoginRequest {
 
   const LoginRequest(this.email, this.password, this.imei, this.deviceType);
 }
+
+class ResetPasswordRequest {
+  final String email;
+
+  ResetPasswordRequest(this.email);
+}

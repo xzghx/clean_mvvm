@@ -2,7 +2,9 @@ import 'package:clean_mvvm_project/app/app_prefs.dart';
 import 'package:clean_mvvm_project/data/network/app_api.dart';
 import 'package:clean_mvvm_project/data/network/dio_factory.dart';
 import 'package:clean_mvvm_project/data/repository/repository_impl.dart';
+import 'package:clean_mvvm_project/domain/usecases/forgot_password_usecase.dart';
 import 'package:clean_mvvm_project/domain/usecases/login_usecase.dart';
+import 'package:clean_mvvm_project/presentation/forgot_password/forgot_password_viewModel.dart';
 import 'package:clean_mvvm_project/presentation/login/login_viewmodel.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -14,7 +16,7 @@ import '../domain/repository/repository.dart';
 
 final instance = GetIt.instance;
 
-void initAppModule() async {
+initAppModule() async {
   final sharedPrefs = await SharedPreferences.getInstance();
 
   //register sharedPrefs
@@ -45,4 +47,11 @@ void initLoginModule() {
     //register LoginViewModel
     instance.registerFactory<LoginViewModel>(() => LoginViewModel(instance()));
   }
+}
+
+void initResetPasswordModule() {
+  instance.registerFactory<ForgotPasswordUseCase>(
+      () => ForgotPasswordUseCase(instance()));
+  instance.registerFactory<ForgotPasswordViewModel>(
+      () => ForgotPasswordViewModel(instance()));
 }

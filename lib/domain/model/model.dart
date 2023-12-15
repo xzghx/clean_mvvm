@@ -46,3 +46,9 @@ class DeviceInfo {
 
   DeviceInfo(this.name, this.identifier, this.version);
 }
+
+class ResetPassword {
+  final String supportMessage;
+
+  ResetPassword(this.supportMessage);
+}
