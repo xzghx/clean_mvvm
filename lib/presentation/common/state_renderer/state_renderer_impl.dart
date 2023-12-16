@@ -39,6 +39,20 @@ class ErrorState implements FlowState {
   StateRendererType getStateRendererType() => stateRendererType;
 }
 
+//Success State
+class SuccessState implements FlowState {
+  final String message;
+
+  SuccessState({required this.message});
+
+  @override
+  String getMessage() => message;
+
+  @override
+  StateRendererType getStateRendererType() =>
+      StateRendererType.popupSuccessState;
+}
+
 //Content state( received data with no error, no  loading)
 class ContentState extends FlowState {
   ContentState();
@@ -107,6 +121,11 @@ extension FlowStateExtension on FlowState {
           retryAction: retryFunc,
           message: getMessage(),
         );
+      case SuccessState:
+        _dismissDialog(context);
+        //show popup
+        _showPopup(context, getMessage(), getStateRendererType(), retryFunc);
+        return contentScreenWidget;
       default:
         return contentScreenWidget;
     }

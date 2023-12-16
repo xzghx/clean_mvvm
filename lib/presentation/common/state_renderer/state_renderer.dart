@@ -14,6 +14,7 @@ enum StateRendererType {
   fullScreenErrorState,
   contentScreenState, //has data
   emptyScreenState, //no data
+  popupSuccessState,
 }
 
 class StateRenderer extends StatelessWidget {
@@ -38,6 +39,7 @@ class StateRenderer extends StatelessWidget {
       case StateRendererType.popupErrorState:
         return _GetDialog(children: [
           _getImage(JsonAssets.errorJson),
+          _getMessage(message!, context),
           _retryButton(AppStrings.ok, context)
         ]);
       case StateRendererType.fullScreenLoadingState:
@@ -58,13 +60,21 @@ class StateRenderer extends StatelessWidget {
           _getImage(JsonAssets.emptyJson),
           _getMessage(message!, context)
         ]);
+      case StateRendererType.popupSuccessState:
+        return _GetDialog(children: [
+          const Icon(Icons.done_outline, color: Colors.greenAccent),
+          _getMessage(title!, context),
+          _getMessage(message!, context),
+          _retryButton(AppStrings.ok, context)
+        ]);
     }
   }
 
   _getMessage(String message, BuildContext context) {
     return Text(
       message,
-      style: Theme.of(context).textTheme.bodyLarge,
+      style: const TextStyle(
+          fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
     );
   }
 
@@ -104,13 +114,14 @@ class _GetDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSize.s14)),
       child: Container(
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSize.s14),
             shape: BoxShape.rectangle),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: children,
         ),
       ),
