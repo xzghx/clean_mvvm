@@ -22,4 +22,14 @@ abstract class AppServiceClient {
   Future<ResetPasswordResponse> resetPassword(
     @Field('email') String email,
   );
+
+  @POST('/v3/8c2b9c73-1c13-4776-80e3-6033d8286204')
+  Future<LoginResponse> register(
+    @Field('email') String email,
+    @Field('mobile') String mobile,
+    @Field('countryCode') String countryCode,
+    @Field('userName') String userName,
+    @Field('password') String password,
+    @Field('profilePicture') String profilePicture,
+  );
 }

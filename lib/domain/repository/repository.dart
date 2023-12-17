@@ -9,4 +9,6 @@ abstract class Repository {
 
   Future<Either<Failure, ResetPassword>> resetPassword(
       ResetPasswordRequest request);
+
+  Future<Either<Failure, Login>> register(RegisterRequest request);
 }
